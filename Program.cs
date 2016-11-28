@@ -37,6 +37,9 @@ namespace PrivateKeyCracker
             string c = "ITG!AAEXEX IRRG!IGRXI OIXGEREAGO";
             Console.WriteLine("cipher text: " + c);
             Console.WriteLine("numeric version: " + LettersToNumbers(c));
+            Console.WriteLine("m1: " + NumbersToLetters("8424374323"));
+            Console.WriteLine("m2: " + NumbersToLetters("5889745469"));
+            Console.WriteLine("m3: " + NumbersToLetters("5323356606"));
         }
 
 
