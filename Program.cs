@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Numerics;
 using System.Collections.Generic;
 
@@ -26,20 +26,29 @@ namespace PrivateKeyCracker
             n = 10539750919;
             Console.WriteLine("e: " + e.ToString());
             Console.WriteLine("n: " + n.ToString());
+            Console.WriteLine("please be patient...this takes a bit to run");
             FindPQ();
             FindD();
             Console.WriteLine("\np: " + p.ToString());
             Console.WriteLine("q: " + q.ToString());
             Console.WriteLine("d: " + d.ToString());
             Console.WriteLine("decrypting please wait...");
-            //String m1 = Decrypt("ITG!AAEXEX");
-            //Console.WriteLine("M1: " + m1.ToString());
             string c = "ITG!AAEXEX IRRG!IGRXI OIXGEREAGO";
             Console.WriteLine("cipher text: " + c);
             Console.WriteLine("numeric version: " + LettersToNumbers(c));
-            Console.WriteLine("m1: " + NumbersToLetters("8424374323"));
-            Console.WriteLine("m2: " + NumbersToLetters("5889745469"));
-            Console.WriteLine("m3: " + NumbersToLetters("5323356606"));
+            // String m1 = Decrypt("ITG!AAEXEX");
+            // Console.WriteLine("M1: " + m1.ToString());
+            // String m2 = Decrypt("IRRG!IGRXI");
+            // Console.WriteLine("M2: " + m2.ToString());
+            // String m3 = Decrypt("OIXGEREAGO");
+            // Console.WriteLine("M3: " + m3.ToString());
+            String m1 = NumbersToLetters("36217");
+            String m2 = NumbersToLetters("98483");
+            String m3 = NumbersToLetters("57847");
+            Console.WriteLine("m1: " + m1);
+            Console.WriteLine("m2: " + m2);
+            Console.WriteLine("m3: " + m3);
+            Console.WriteLine(m1 + m2 + m3);
         }
 
 
@@ -48,7 +57,7 @@ namespace PrivateKeyCracker
             for (p = 2; p < n; p++)
             {
                 q = n / p;
-                if (BigInteger.GreatestCommonDivisor(e, (p - 1) * (q - 1)) == 1 && IsPrime(p) && IsPrime(q))
+                if (BigInteger.GreatestCommonDivisor(e, (p - 1) * (q - 1)) == 1 && IsPrime(p) && IsPrime(q) && p * q == n)
                 {
                     return;
                 }
@@ -120,7 +129,7 @@ namespace PrivateKeyCracker
             // {
             //     Console.WriteLine(i);
             //     raised *= numeric;
-            // } 
+            // }
             numeric = raised % n;
             c = numeric.ToString();
             c = NumbersToLetters(c);
